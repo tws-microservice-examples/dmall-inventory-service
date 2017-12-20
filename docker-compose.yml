@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  dmall-registry-server:
+  dmall-inventory-service:
       image: ec2-54-223-92-91.cn-north-1.compute.amazonaws.com.cn:5000/dmall/inventory-service:$BUILD_NUMBER
       ports:
           - "8082:8082"
