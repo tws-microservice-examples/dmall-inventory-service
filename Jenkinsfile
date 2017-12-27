@@ -3,7 +3,7 @@ node{
 
     stage('Checkout') {
         step([$class: 'WsCleanup'])
-        git url: 'git@gitee.com:tws-micro-service/dmall-inventory-service.git', branch: 'master'
+        git credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-service.git', branch: 'master'
     }
 
     stage('Build') {
@@ -33,6 +33,8 @@ node{
     }
 
     stage('Deploy to DEV') {
-        sh './deployToDEV.sh'
+        withCredentials([usernamePassword(credentialsId: 'dev_rencher_api_key', passwordVariable: 'SECRET', usernameVariable: 'KEY')]) {
+            sh './deployToDEV.sh'
+        }
     }
 }

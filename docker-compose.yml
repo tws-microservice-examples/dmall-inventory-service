@@ -2,12 +2,9 @@ version: '2'
 
 services:
   dmall-inventory-service:
-    image: ec2-54-223-92-91.cn-north-1.compute.amazonaws.com.cn:5000/dmall/inventory-service:$BUILD_NUMBER
+    image: '${DMALL_DOCKER_REGISTRY}/dmall/inventory-service:${BUILD_NUMBER}'
     ports:
       - "8082:8082"
-    networks:
-          - jenkins_dmall-network
-    container_name: dmall-inventory-service
-networks:
-  jenkins_dmall-network:
-    external: true
+    external_links:
+      - dmall-config-server/dmall-config-server:dmall-config-server
+      - dmall-registry-server/dmall-registry-server:dmall-registry-server
