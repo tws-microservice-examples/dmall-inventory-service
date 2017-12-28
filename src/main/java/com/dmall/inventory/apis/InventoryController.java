@@ -1,5 +1,6 @@
 package com.dmall.inventory.apis;
 
+import com.dmall.inventory.dao.InventoryRepository;
 import com.dmall.inventory.model.Inventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,30 +22,16 @@ import java.util.Optional;
 @RequestMapping("/inventories")
 @RefreshScope
 public class InventoryController {
-
-    private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-    private List<Inventory> inventories = null;
-
     @Autowired
-    public InventoryController() throws ParseException {
-
-        this.inventories = Arrays.asList(
-            new Inventory("p001", "Iphone 6s", 10),
-            new Inventory("p002", "Xiaomi 4 plus", 10),
-            new Inventory("p003", "Oppo R11", 10));
-    }
+    private InventoryRepository inventoryRepository;
 
     @GetMapping
     public List<Inventory> getInventories() {
-
-        return inventories;
+        return (List<Inventory>) inventoryRepository.findAll();
     }
 
-    @RequestMapping(value = "/{inventoryId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public Inventory getDoctorByDoctorId(@PathVariable("inventoryId") final String inventoryId) {
-        Optional<Inventory> doctor = inventories.stream().filter(c -> Objects.equals(c.getInventoryId(), inventoryId)).findAny();
-
-        return doctor.isPresent() ? doctor.get() : null;
-}
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public Inventory getInventoryById(@PathVariable("id") final Long id) {
+        return inventoryRepository.findOne(id);
+    }
 }
