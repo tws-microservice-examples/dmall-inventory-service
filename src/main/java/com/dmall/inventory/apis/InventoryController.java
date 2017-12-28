@@ -46,5 +46,5 @@ public class InventoryController {
         Optional<Inventory> doctor = inventories.stream().filter(c -> Objects.equals(c.getInventoryId(), inventoryId)).findAny();
 
         return doctor.isPresent() ? doctor.get() : null;
-    }
+}
 }
