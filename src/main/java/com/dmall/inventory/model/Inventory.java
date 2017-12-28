@@ -11,44 +11,41 @@ public class Inventory {
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
   private Long id;
-  private String inventoryId;
-  private String name;
-  private Integer amount;
+  private String sku;
+  private String warehouse;
+  private Integer quantity;
 
-  public Inventory() {
-    super();
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public Inventory(String inventoryId, String name, Integer amount) {
-    super();
-    this.inventoryId = inventoryId;
-    this.name = name;
-    this.amount = amount;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getInventoryId() {
-    return inventoryId;
-  }
+    public String getSku() {
+        return sku;
+    }
 
-  public void setInventoryId(String inventoryId) {
-    this.inventoryId = inventoryId;
-  }
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getWarehouse() {
+        return warehouse;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setWarehouse(String warehouse) {
+        this.warehouse = warehouse;
+    }
 
-  public Integer getAmount() {
-    return amount;
-  }
+    public Integer getQuantity() {
+        return quantity;
+    }
 
-  public void setAmount(Integer amount) {
-    this.amount = amount;
-  }
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }
 
 
