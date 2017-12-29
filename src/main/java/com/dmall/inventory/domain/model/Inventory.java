@@ -1,5 +1,5 @@
 
-package com.dmall.inventory.model;
+package com.dmall.inventory.domain.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,6 +45,10 @@ public class Inventory {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void addQuantity(Integer quantity) {
+        setQuantity(this.quantity + quantity);
     }
 }
 

@@ -1,6 +1,6 @@
 package com.dmall.inventory.dao;
 
-import com.dmall.inventory.model.Inventory;
+import com.dmall.inventory.domain.model.Inventory;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

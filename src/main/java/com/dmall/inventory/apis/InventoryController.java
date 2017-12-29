@@ -2,7 +2,8 @@ package com.dmall.inventory.apis;
 
 import com.dmall.inventory.apis.common.NotFoundException;
 import com.dmall.inventory.dao.InventoryRepository;
-import com.dmall.inventory.model.Inventory;
+import com.dmall.inventory.domain.model.Inventory;
+import com.dmall.inventory.domain.service.InventoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -19,6 +20,9 @@ public class InventoryController {
     private InventoryRepository inventoryRepository;
 
     @Autowired
+    private InventoryService inventoryService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @GetMapping
@@ -33,8 +37,8 @@ public class InventoryController {
 
     @RequestMapping(value = "", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Inventory createInventory(@RequestBody Inventory inventory) {
-        Inventory savedInventory = inventoryRepository.save(inventory);
-        return savedInventory;
+    public Inventory addInventory(@RequestBody Inventory inventory) {
+        return inventoryService.addInventory(inventory);
     }
+
 }
