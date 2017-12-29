@@ -1,6 +1,8 @@
 package com.dmall.inventory.apis;
 
+import com.dmall.inventory.apis.common.NotEnoughQuantityException;
 import com.dmall.inventory.apis.common.NotFoundException;
+import com.dmall.inventory.apis.dto.InventoryDTO;
 import com.dmall.inventory.dao.InventoryRepository;
 import com.dmall.inventory.domain.model.Inventory;
 import com.dmall.inventory.domain.service.InventoryService;
@@ -37,8 +39,14 @@ public class InventoryController {
 
     @RequestMapping(value = "", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Inventory addInventory(@RequestBody Inventory inventory) {
-        return inventoryService.addInventory(inventory);
+    public Inventory addInventory(@RequestBody InventoryDTO inventoryDTO) {
+        return inventoryService.addInventory(inventoryDTO);
+    }
+
+    @RequestMapping(value = "/lock", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Inventory lockInventory(@RequestBody InventoryDTO inventoryDTO) {
+        return inventoryService.lockInventory(inventoryDTO);
     }
 
 }

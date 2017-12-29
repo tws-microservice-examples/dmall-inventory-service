@@ -8,12 +8,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Inventory {
-  @Id
-  @GeneratedValue(strategy= GenerationType.AUTO)
-  private Long id;
-  private String sku;
-  private String warehouse;
-  private Integer quantity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String sku;
+    private String warehouse;
+    private Integer currentQuantity;
+    private Integer lockedQuantity;
 
     public Long getId() {
         return id;
@@ -39,16 +40,28 @@ public class Inventory {
         this.warehouse = warehouse;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getCurrentQuantity() {
+        return currentQuantity;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setCurrentQuantity(Integer currentQuantity) {
+        this.currentQuantity = currentQuantity;
     }
 
     public void addQuantity(Integer quantity) {
-        setQuantity(this.quantity + quantity);
+        setCurrentQuantity(this.currentQuantity + quantity);
+    }
+
+    public Integer getAvailableQuantity() {
+        return currentQuantity - lockedQuantity;
+    }
+
+    public void setLockedQuantity(Integer lockedQuantity) {
+        this.lockedQuantity = lockedQuantity;
+    }
+
+    public void lockQuantity(Integer quantity) {
+        setLockedQuantity(this.lockedQuantity + quantity);
     }
 }
 
