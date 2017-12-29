@@ -49,4 +49,10 @@ public class InventoryController {
         return inventoryService.lockInventory(inventoryDTO);
     }
 
+    @RequestMapping(value = "/unlock", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Inventory unlockInventory(@RequestBody InventoryDTO inventoryDTO) {
+        return inventoryService.unlockInventory(inventoryDTO);
+    }
+
 }

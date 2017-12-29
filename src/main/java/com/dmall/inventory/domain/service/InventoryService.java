@@ -43,4 +43,10 @@ public class InventoryService {
 
         throw new NotEnoughQuantityException();
     }
+
+    public Inventory unlockInventory(InventoryDTO inventoryDTO) {
+        Inventory inventory = inventoryRepository.findBySku(inventoryDTO.getSku()).orElseThrow(NotFoundException::new);
+        inventory.unlockQuantity(inventoryDTO.getQuantity());
+        return inventoryRepository.save(inventory);
+    }
 }

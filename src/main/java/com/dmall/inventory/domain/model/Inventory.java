@@ -63,6 +63,10 @@ public class Inventory {
     public void lockQuantity(Integer quantity) {
         setLockedQuantity(this.lockedQuantity + quantity);
     }
+
+    public void unlockQuantity(Integer quantity) {
+        setLockedQuantity(this.lockedQuantity - quantity);
+    }
 }
 
 
