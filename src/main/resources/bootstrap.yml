@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: inventory-service
+---
+spring:
+  profiles: dev,staging,production
+  cloud:
+    config:
+      uri: http://dmall-config-server:8888
+

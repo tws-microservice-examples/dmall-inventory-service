@@ -1,9 +1,6 @@
 server:
   port: 8084
-
 spring:
-  profiles:
-    active: local
   datasource:
     url: jdbc:h2:mem:testData;MODE=MySQL;DB_CLOSE_DELAY=-1
     username: sa
@@ -15,12 +12,11 @@ spring:
   h2:
     console:
       enabled: true
+  cloud:
+    config:
+      enabled: false
 logging.level.project.user.UserClient: DEBUG
 
 eureka:
   client:
     enabled: false
-
-product-service:
-  ribbon:
-    listOfServers: localhost:8083
