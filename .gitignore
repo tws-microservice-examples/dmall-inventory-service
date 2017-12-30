@@ -6,3 +6,7 @@
 /classes/
 .classpath
 .project
+*.iml
+*.ipr
+*.iws
+merge.sh
