@@ -17,7 +17,3 @@ logging.level.project.user.UserClient: DEBUG
 eureka:
   client:
     enabled: false
-
-product-service:
-  ribbon:
-    listOfServers: localhost:8083
