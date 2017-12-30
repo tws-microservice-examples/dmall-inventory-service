@@ -13,7 +13,10 @@ spring:
     console:
       enabled: true
 logging.level.project.user.UserClient: DEBUG
-
+flyway:
+  locations:
+    - 'filesystem:src/main/resources/db/migration'
+    - 'filesystem:src/test/resources/db/migration'
 eureka:
   client:
     enabled: false

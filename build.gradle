@@ -55,7 +55,6 @@ dependencyManagement {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-
 task createWrapper(type: Wrapper) {
     gradleVersion = '3.5.1'
 }
