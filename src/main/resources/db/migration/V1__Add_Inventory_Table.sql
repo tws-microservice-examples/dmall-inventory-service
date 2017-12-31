@@ -7,4 +7,5 @@ CREATE TABLE `inventory` (
   `created_date` TIMESTAMP
 );
 
-INSERT INTO inventory (id, sku, warehouse, current_quantity, locked_quantity, created_date) VALUES (null, 'iPhone X 64G 黑色', '北京仓', 100, 0, null);
+INSERT INTO inventory ( sku, warehouse, current_quantity, locked_quantity, created_date)
+VALUES ('6009907', 'iPhone X 64G 银色', '北京仓', 100, 0, null);
