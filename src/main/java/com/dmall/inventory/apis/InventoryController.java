@@ -55,4 +55,9 @@ public class InventoryController {
         return inventoryService.unlockInventory(inventoryDTO);
     }
 
+    @RequestMapping(value = "/deduct", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Inventory deductInventory(@RequestBody InventoryDTO inventoryDTO) {
+        return inventoryService.deductInventory(inventoryDTO);
+    }
 }

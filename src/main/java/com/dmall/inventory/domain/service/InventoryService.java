@@ -49,4 +49,11 @@ public class InventoryService {
         inventory.unlockQuantity(inventoryDTO.getQuantity());
         return inventoryRepository.save(inventory);
     }
+
+    public Inventory deductInventory(InventoryDTO inventoryDTO) {
+        Inventory inventory = inventoryRepository.findBySku(inventoryDTO.getSku()).orElseThrow(NotFoundException::new);
+        inventory.unlockQuantity(inventoryDTO.getQuantity());
+        inventory.deductQuantity(inventoryDTO.getQuantity());
+        return inventory;
+    }
 }
