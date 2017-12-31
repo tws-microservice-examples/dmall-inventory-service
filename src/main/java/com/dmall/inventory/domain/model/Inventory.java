@@ -2,6 +2,7 @@
 package com.dmall.inventory.domain.model;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name = "inventory")
@@ -13,6 +14,16 @@ public class Inventory {
     private String warehouse;
     private Integer currentQuantity;
     private Integer lockedQuantity;
+
+    public Inventory() {}
+
+    public Inventory(Long id, String sku, String warehouse, Integer currentQuantity, Integer lockedQuantity) {
+        this.id = id;
+        this.sku = sku;
+        this.warehouse = warehouse;
+        this.currentQuantity = currentQuantity;
+        this.lockedQuantity = lockedQuantity;
+    }
 
     public Long getId() {
         return id;
