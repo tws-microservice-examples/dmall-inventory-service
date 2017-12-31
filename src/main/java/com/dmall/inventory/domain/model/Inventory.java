@@ -44,6 +44,10 @@ public class Inventory {
         return currentQuantity;
     }
 
+    public Integer getLockedQuantity() {
+        return lockedQuantity;
+    }
+
     public void setCurrentQuantity(Integer currentQuantity) {
         this.currentQuantity = currentQuantity;
     }
@@ -66,6 +70,10 @@ public class Inventory {
 
     public void unlockQuantity(Integer quantity) {
         setLockedQuantity(this.lockedQuantity - quantity);
+    }
+
+    public void deductQuantity(Integer quantity) {
+        setCurrentQuantity(this.currentQuantity - quantity);
     }
 }
 
