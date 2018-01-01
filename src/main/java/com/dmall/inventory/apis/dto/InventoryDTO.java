@@ -28,4 +28,13 @@ public class InventoryDTO {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+    public InventoryDTO(String sku, InventoryCommandDTO commandDTO) {
+        this.sku = sku;
+        this.quantity = commandDTO.getQuantity();
+    }
+
+    public InventoryDTO(){
+
+    }
 }
