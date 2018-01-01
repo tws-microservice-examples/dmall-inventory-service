@@ -1,5 +1,6 @@
-package com.dmall.inventory;
+package com.dmall;
 
+import com.dmall.inventory.Application;
 import com.dmall.inventory.apis.InventoryController;
 import com.dmall.inventory.dao.InventoryRepository;
 import com.dmall.inventory.domain.model.Inventory;
