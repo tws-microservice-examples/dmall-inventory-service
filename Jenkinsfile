@@ -20,7 +20,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 step([$class: 'WsCleanup'])
-            git  poll: true,  credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-service.git', branch: 'master'
+            git  poll: true,  credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-service.git', branch: 'release'
             }
                 
         }
@@ -72,6 +72,20 @@ pipeline {
                     sh './deployToDEV.sh'
                 }
             }
+        }
+
+        stage('repo clean up'){
+            steps {
+                step([$class: 'WsCleanup'])
+            }
+        }
+
+        stage('Checkout stub repo') {
+            steps {
+                step([$class: 'WsCleanup'])
+            git  poll: true,  credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-stub-service.git', branch: 'master'
+            }
+
         }
   }  
 }
