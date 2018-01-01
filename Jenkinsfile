@@ -79,5 +79,11 @@ pipeline {
                 sh './gradlew :publishStubsPublicationToMavenRepository'
             }
         }
+
+        stage('TrigerStubServer'){
+            steps {
+                build 'dmall-inventory-stub-service'
+            }
+        }
     }
 }
