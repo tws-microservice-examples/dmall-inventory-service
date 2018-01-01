@@ -60,13 +60,13 @@ pipeline {
             }
         }
 
-        stage('Docker image') {
+        stage('GenDockerImage') {
             steps{
                 sh './genImages.sh'
             }
         }
 
-        stage('Deploy to DEV') {
+        stage('DeployToDEV') {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'dev_rencher_api_key', passwordVariable: 'SECRET', usernameVariable: 'KEY')]) {
                     sh './deployToDEV.sh'
@@ -74,37 +74,10 @@ pipeline {
             }
         }
 
-        stage('CleanUpRepo'){
+        stage('PublishStubs'){
             steps {
-                step([$class: 'WsCleanup'])
+                sh './gradlew :publishStubsPublicationToMavenRepository'
             }
         }
-
-        stage('CheckoutStubRepo') {
-            steps {
-                step([$class: 'WsCleanup'])
-            git  poll: true,  credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-stub-service.git', branch: 'master'
-            }
-        }
-
-        stage('BuildStubServerJar') {
-            steps{
-                    sh './gradlew clean build'
-            }
-        }
-
-        stage('GenStubDockerImage') {
-            steps{
-                sh './genImages.sh'
-            }
-        }
-
-        stage('DeployStubToDEV') {
-            steps{
-                withCredentials([usernamePassword(credentialsId: 'dev_rencher_api_key', passwordVariable: 'SECRET', usernameVariable: 'KEY')]) {
-                    sh './deployToDEV.sh'
-                }
-            }
-        }
-  }  
+    }
 }
