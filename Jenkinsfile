@@ -74,7 +74,7 @@ pipeline {
             }
         }
 
-        stage('repo clean up'){
+        stage('Clean Up Repo'){
             steps {
                 step([$class: 'WsCleanup'])
             }
