@@ -1,5 +1,6 @@
 package com.dmall.inventory;
 
+import com.dmall.inventory.apis.InventoryController;
 import com.dmall.inventory.dao.InventoryRepository;
 import com.dmall.inventory.domain.model.Inventory;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
@@ -34,6 +35,7 @@ public class InventoryBase {
     public void setup() {
         Inventory inventory_one = new Inventory(1L, "aaaa-bbbb-cccc", "A1", 10000, 100);
         BDDMockito.given(this.repo.findBySku("aaaa-bbbb-cccc")).willReturn(java.util.Optional.ofNullable(inventory_one));
+//        RestAssuredMockMvc.standaloneSetup(new InventoryController());
         RestAssuredMockMvc.webAppContextSetup(wac);
     }
 }
