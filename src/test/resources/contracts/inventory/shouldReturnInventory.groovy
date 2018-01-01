@@ -13,13 +13,17 @@ import org.springframework.cloud.contract.spec.Contract
                 status 200
                 body("""
                     {
-                        "id": 2,
+                        "id": 1,
                         "sku": "aaaa-bbbb-cccc",
                         "warehouse": "A1",
                         "currentQuantity": 10000,
                         "availableQuantity": 9900
                     }
                 """)
+                testMatchers {
+                    jsonPath('$.id', byRegex(number()))
+                }
             }
+
         },
 ]
