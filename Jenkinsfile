@@ -74,13 +74,13 @@ pipeline {
             }
         }
 
-        stage('Clean Up Repo'){
+        stage('CleanUpRepo'){
             steps {
                 step([$class: 'WsCleanup'])
             }
         }
 
-        stage('Checkout stub repo') {
+        stage('CheckoutStubRepo') {
             steps {
                 step([$class: 'WsCleanup'])
             git  poll: true,  credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-stub-service.git', branch: 'master'
