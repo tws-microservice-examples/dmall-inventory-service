@@ -28,14 +28,8 @@ public class InventoryBase {
     @Autowired
     WebApplicationContext wac;
 
-    @MockBean
-    InventoryRepository repo;
-
     @Before
     public void setup() {
-        Inventory inventory_one = new Inventory(1L, "aaaa-bbbb-cccc", "A1", 10000, 100);
-        BDDMockito.given(this.repo.findBySku("aaaa-bbbb-cccc")).willReturn(java.util.Optional.ofNullable(inventory_one));
-//        RestAssuredMockMvc.standaloneSetup(new InventoryController());
         RestAssuredMockMvc.webAppContextSetup(wac);
     }
 }

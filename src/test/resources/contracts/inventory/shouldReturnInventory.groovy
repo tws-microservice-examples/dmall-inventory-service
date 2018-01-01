@@ -7,13 +7,13 @@ import org.springframework.cloud.contract.spec.Contract
             name('Should get a product')
             request {
                 method GET()
-                url ('inventories/aaaa-bbbb-cccc')
+                url ('/inventories/aaaa-bbbb-cccc')
             }
             response {
                 status 200
                 body("""
                     {
-                        "id": 1,
+                        "id": 2,
                         "sku": "aaaa-bbbb-cccc",
                         "warehouse": "A1",
                         "currentQuantity": 10000,

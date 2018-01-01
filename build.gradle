@@ -78,3 +78,18 @@ contracts {
     packageWithBaseClasses = 'com.dmall.inventory'
 }
 
+group = 'com.dmall.inventory'
+version = '0.0.1-SNAPSHOT'
+
+publishing {
+    repositories {
+        maven {
+            url 'http://ec2-54-223-162-96.cn-north-1.compute.amazonaws.com.cn:8081/repository/maven-snapshots/'
+            credentials {
+                username = 'admin'
+                password = 'admin123'
+            }
+        }
+    }
+}
+
