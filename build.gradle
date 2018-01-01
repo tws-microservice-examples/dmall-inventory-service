@@ -47,9 +47,9 @@ dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-eureka")
     compile("org.springframework.cloud:spring-cloud-starter-hystrix")
     compile 'com.github.jmnarloch:modelmapper-spring-boot-starter:1.0.1'
-    compile("org.flywaydb:flyway-core")
-    compile group: 'commons-io', name: 'commons-io', version: '2.5'
 
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile("org.flywaydb:flyway-core:4.1.1")
     runtime('com.h2database:h2')
     runtime('mysql:mysql-connector-java')
 

@@ -17,6 +17,7 @@ flyway:
   locations:
     - 'filesystem:src/main/resources/db/migration'
     - 'filesystem:src/test/resources/db/migration'
+  validateOnMigrate: false
 eureka:
   client:
     enabled: false

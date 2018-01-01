@@ -1,1 +1,2 @@
+INSERT INTO inventory (id, sku, warehouse, current_quantity, locked_quantity, created_date) VALUES (null, 'iPhone X 64G 黑色', '北京仓', 100, 0, null);
 INSERT INTO `inventory` VALUES (null, 'aaaa-bbbb-cccc', 'A1', 10000, 100, '2012-09-17 18:47:52.69');

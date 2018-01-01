@@ -6,5 +6,3 @@ CREATE TABLE `inventory` (
   `locked_quantity`     BIGINT  NOT NULL,
   `created_date` TIMESTAMP
 );
-
-INSERT INTO inventory (id, sku, warehouse, current_quantity, locked_quantity, created_date) VALUES (null, 'iPhone X 64G 黑色', '北京仓', 100, 0, null);
