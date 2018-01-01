@@ -24,6 +24,5 @@ import org.springframework.cloud.contract.spec.Contract
                     jsonPath('$.id', byRegex(number()))
                 }
             }
-
         },
 ]
