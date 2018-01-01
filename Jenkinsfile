@@ -85,7 +85,26 @@ pipeline {
                 step([$class: 'WsCleanup'])
             git  poll: true,  credentialsId: 'git-viewer', url: 'git@gitee.com:tws-micro-service/dmall-inventory-stub-service.git', branch: 'master'
             }
+        }
 
+        stage('BuildStubServerJar') {
+            steps{
+                    sh './gradlew clean build'
+            }
+        }
+
+        stage('GenStubDockerImage') {
+            steps{
+                sh './genImages.sh'
+            }
+        }
+
+        stage('DeployStubToDEV') {
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'dev_rencher_api_key', passwordVariable: 'SECRET', usernameVariable: 'KEY')]) {
+                    sh './deployToDEV.sh'
+                }
+            }
         }
   }  
 }
