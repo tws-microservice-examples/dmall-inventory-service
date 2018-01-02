@@ -45,7 +45,6 @@ import org.springframework.cloud.contract.spec.Contract
                 }
                 body("""
                     {
-                        "sku": "6009907",
                         "quantity": 1
                     }
                 """)
