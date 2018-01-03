@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: inventory-service
+spring:
   profiles: dev,production
   cloud:
     config:
